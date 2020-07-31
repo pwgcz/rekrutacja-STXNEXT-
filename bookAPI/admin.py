@@ -1,3 +1,23 @@
 from django.contrib import admin
+from .models import Book, Category, Author
 
-# Register your models here.
+
+class BookAdmin(admin.ModelAdmin):
+    empty_value_display = 'unknown'
+    fields = (
+        'book_id', 'title', 'published_date', 'average_rating', 'ratings_count', 'thumbnail', 'authors', 'categories')
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    empty_value_display = 'unknown'
+    fields = ('name',)
+
+
+class AuthorAdmin(admin.ModelAdmin):
+    empty_value_display = 'unknown'
+    fields = ('name',)
+
+
+admin.site.register(Book, BookAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Author, AuthorAdmin)
