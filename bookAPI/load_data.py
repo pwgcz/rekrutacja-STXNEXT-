@@ -8,11 +8,11 @@ django.setup()
 from bookAPI.models import Book, Category, Author
 
 
-def load_to_db():
-    book_data = requests.get('https://www.googleapis.com/books/v1/volumes?q=Hobbit').json()
+def load_to_db(query: str):
+    book_data = requests.get('https://www.googleapis.com/books/v1/volumes?q={}'.format(query)).json()
+    all_book_id = []
 
     for book in book_data['items']:
-
         new_book = Book(book_id=book['id'],
                         title=book['volumeInfo']['title'],
                         published_date=book['volumeInfo']['publishedDate'],
@@ -42,9 +42,11 @@ def load_to_db():
                     new_category = Category(name=category)
                     new_category.save()
                     new_book.categories.add(new_category)
-
+        all_book_id.append(new_book.book_id)
         new_book.save()
+
+    return all_book_id
 
 
 if __name__ == '__main__':
-    load_to_db()
+    load_to_db('Hobbit')
