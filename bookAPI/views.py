@@ -20,22 +20,7 @@ class DB(APIView):
 
 
 class BookList(ListAPIView):
-    # queryset = Book.objects.all()
-    # serializer_class = BookSerializer
-    # # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['published_date']
 
-    # def get_queryset(self):
-    #     queryset = Book.objects.all()
-    #     username = self.request.query_params.get('username', None)
-    #     if username is not None:
-    #         queryset = queryset.filter(purchaser__username=username)
-    #     return queryset
-    #
-    # def get(self, request, format=None):
-    #     books = Book.objects.all()
-    #     serializer = BookSerializer(books, many=True)
-    #     return Response(serializer.data)
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
