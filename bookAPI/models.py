@@ -3,13 +3,13 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Book(models.Model):
-    book_id = models.AutoField(primary_key=True)
+    book_id = models.CharField(_('id'), primary_key=True, max_length=50)
 
     title = models.CharField(_('title'), max_length=200)
-    published_date = models.CharField(_('published date'), max_length=4)
-    average_rating = models.FloatField(_('average rating'), default=0)
-    ratings_count = models.IntegerField(_('rating count'), default=0)
-    thumbnail = models.CharField(_('thumbnail'), max_length=300)
+    published_date = models.CharField(_('published date'), max_length=4, null=True, blank=True)
+    average_rating = models.FloatField(_('average rating'), default=0, null=True, blank=True)
+    ratings_count = models.IntegerField(_('rating count'), default=0, null=True, blank=True)
+    thumbnail = models.CharField(_('thumbnail'), max_length=300, null=True, blank=True)
 
     authors = models.ManyToManyField('Author')
     categories = models.ManyToManyField('Category')
@@ -25,7 +25,7 @@ class Book(models.Model):
 class Author(models.Model):
     author_id = models.AutoField(primary_key=True)
 
-    name = models.CharField(_('name'), max_length=200)
+    name = models.CharField(_('name'), max_length=200, null=True, blank=True)
 
     class Meta:
         verbose_name = _('author')
@@ -38,7 +38,7 @@ class Author(models.Model):
 class Category(models.Model):
     category_id = models.AutoField(primary_key=True)
 
-    name = models.CharField(_('name'), max_length=200)
+    name = models.CharField(_('name'), max_length=200, null=True, blank=True)
 
     class Meta:
         verbose_name = _('category')
