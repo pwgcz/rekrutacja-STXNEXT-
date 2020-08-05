@@ -2,12 +2,12 @@ import operator
 from functools import reduce
 
 from rest_framework.decorators import api_view
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, get_object_or_404
 from rest_framework.reverse import reverse
 
+from .client import Client
 from .load_data import load_to_db
 from .models import Book
-from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, filters
@@ -17,9 +17,8 @@ from django.db.models import Q
 
 class DB(APIView):
     def post(self, request, format=None):
-        data = load_to_db(request.data['q'])
-        if data[1] is None:
-            return Response(data[0], status=status.HTTP_400_BAD_REQUEST)
+        raw_data = Client("https://www.googleapis.com/books/v1/volumes").get_books(request.data['q'])
+        data = load_to_db(raw_data)
         return Response(data, status=status.HTTP_201_CREATED)
 
 
@@ -41,8 +40,8 @@ class BookList(ListAPIView):
         if published_date is not None:
             queryset = queryset.filter(published_date=published_date)
 
-        authors = [Q(authors__name=author) for author in self.request.query_params.getlist('author', None)]
-        if len(authors) > 0:
+        authors = [Q(authors__name=author) for author in self.request.query_params.getlist('author', [])]
+        if authors:
             queryset = queryset.filter(reduce(operator.or_, authors))
 
         return queryset
@@ -50,14 +49,8 @@ class BookList(ListAPIView):
 
 class BookDetails(APIView):
 
-    def get_object(self, pk):
-        try:
-            return Book.objects.get(pk=pk)
-        except Book.DoesNotExist:
-            raise Http404
-
     def get(self, request, pk, format=None):
-        book = self.get_object(pk)
+        book = get_object_or_404(Book, pk=pk)
         serializer = BookSerializer(book)
         return Response(serializer.data)
 
@@ -67,5 +60,5 @@ def api_root(request, format=None):
     return Response({
         'db': reverse('db', request=request, format=format),
         'books': reverse('books-list', request=request, format=format),
-        'books/<pk>': reverse('book-detail', kwargs={'pk': 'YyXoAAAACAAJ'}, request=request, format=format)
+        'books/{pk}': reverse('book-detail', kwargs={'pk': 'DqLPAAAAMAAJ'}, request=request, format=format)
     })

@@ -14,7 +14,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 class BookAdmin(admin.ModelAdmin):
     empty_value_display = 'unknown'
-    fields = ('title', 'published_date', 'average_rating', 'ratings_count', 'thumbnail', 'authors', 'categories')
+    fields = ('book_id', 'title', 'published_date', 'average_rating', 'ratings_count', 'thumbnail', 'authors', 'categories')
 
 
 admin.site.register(Category, CategoryAdmin)
