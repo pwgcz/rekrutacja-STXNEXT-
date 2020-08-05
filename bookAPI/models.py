@@ -7,8 +7,8 @@ class Book(models.Model):
 
     title = models.CharField(_('title'), max_length=200)
     published_date = models.CharField(_('published date'), max_length=4, null=True, blank=True)
-    average_rating = models.FloatField(_('average rating'), default=0, null=True, blank=True)
-    ratings_count = models.IntegerField(_('rating count'), default=0, null=True, blank=True)
+    average_rating = models.FloatField(_('average rating'), null=True, blank=True)
+    ratings_count = models.IntegerField(_('rating count'), null=True, blank=True)
     thumbnail = models.CharField(_('thumbnail'), max_length=300, null=True, blank=True)
 
     authors = models.ManyToManyField('Author')

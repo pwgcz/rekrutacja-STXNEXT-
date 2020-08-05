@@ -1,20 +1,27 @@
+from json import JSONDecodeError
+
 import requests
 import os
+
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'books.settings')
 
 import django
 django.setup()
 
 from bookAPI.models import Book, Category, Author
+from bookAPI.serializers import BookSerializer
 
 
 def load_to_db(query: str):
-    book_data = requests.get('https://www.googleapis.com/books/v1/volumes?q={}'.format(query)).json()
-    all_book_id = []
+    try:
+        book_data = requests.get('https://www.googleapis.com/books/v1/volumes?q={}'.format(query)).json()
+    except JSONDecodeError:
+        return {'Error': 'Bad Request', 'status': 400}, None
 
+    all_book = []
     for book in book_data['items']:
-        new_book = Book(book_id=book['id'],
-                        title=book['volumeInfo']['title'],
+        new_book = Book(book_id=book['id'],                        title=book['volumeInfo']['title'],
                         published_date=book['volumeInfo']['publishedDate'],
                         thumbnail=book['volumeInfo']['imageLinks']['thumbnail']
                         )
@@ -42,11 +49,12 @@ def load_to_db(query: str):
                     new_category = Category(name=category)
                     new_category.save()
                     new_book.categories.add(new_category)
-        all_book_id.append(new_book.book_id)
         new_book.save()
+        serializer = BookSerializer(new_book)
+        all_book.append(serializer.data)
 
-    return all_book_id
+    return all_book
 
 
 if __name__ == '__main__':
-    load_to_db('Hobbit')
+    print(load_to_db('Hobbit'))
