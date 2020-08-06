@@ -96,8 +96,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
+STATIC_ROOT = '/home/django/django_project/django_project/static'
+STATIC_DIRS = (
+    os.path.join(BASE_DIR, "static")
+)
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
