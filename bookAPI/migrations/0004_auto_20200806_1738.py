@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookAPI', '0003_auto_20200805_0913'),
+        ("bookAPI", "0003_auto_20200805_0913"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='published_date',
-            field=models.CharField(blank=True, max_length=20, null=True, verbose_name='published date'),
+            model_name="book",
+            name="published_date",
+            field=models.CharField(
+                blank=True, max_length=20, null=True, verbose_name="published date"
+            ),
         ),
     ]

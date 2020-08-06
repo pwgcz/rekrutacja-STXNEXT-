@@ -11,6 +11,7 @@ from bookAPI.models import Book, Category, Author
 from bookAPI.serializers import BookSerializer
 from bookAPI.client import Client
 
+
 class BookDataIterator:
     def __init__(self, data):
         self._data = data

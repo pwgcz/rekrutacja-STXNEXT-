@@ -55,7 +55,7 @@
     only for development purpose
     * _Create superuser in Django Admin to illustrate data saved in database, example:_
     ![Screenshot from 2020-08-06 18-10-26](https://user-images.githubusercontent.com/62465226/89555322-30525580-d810-11ea-9d43-4f4f742ba5a3.png)
-    * _add in setting `rest_framework.renderers.BrowsableAPIRenderer',` to `'DEFAULT_RENDERER_CLASSES'` and Login  to admin site and go to /api endpoint to illustrate available endpoint and format of data, example:_
+    * _add in setting `'rest_framework.renderers.BrowsableAPIRenderer',` to `'DEFAULT_RENDERER_CLASSES'` and Login  to admin site and go to /api endpoint to illustrate available endpoint and format of data, example:_
     ![Screenshot from 2020-08-06 17-23-33](https://user-images.githubusercontent.com/62465226/89555082-ec5f5080-d80f-11ea-9aaa-9b16da4474e7.png)
 
     
