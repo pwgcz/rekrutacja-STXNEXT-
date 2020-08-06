@@ -11,7 +11,6 @@ DEBUG = config("DEBUG", default=True, cast=bool)
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "https://recruitment-stx-library.herokuapp.com",
     ".herokuapp.com",
 ]
 
@@ -103,5 +102,6 @@ REST_FRAMEWORK = {
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ]
 }
