@@ -11,7 +11,7 @@ DEBUG = config("DEBUG", default=True, cast=bool)
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "https://recruitment-stx-library.herokuapp.com",
+    "https://recruitment-stx-library.herokuapp.com/",
 ]
 
 APPEND_SLASH = True
