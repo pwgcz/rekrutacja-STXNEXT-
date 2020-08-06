@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from bookAPI.client import Client
-from bookAPI.load_data import load_to_db
+from load_data import load_to_db
 
 
 class BookTests(APITestCase):

@@ -1,6 +1,5 @@
 import os
 
-from bookAPI.client import Client
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "books.settings")
 
@@ -10,7 +9,7 @@ django.setup()
 
 from bookAPI.models import Book, Category, Author
 from bookAPI.serializers import BookSerializer
-
+from bookAPI.client import Client
 
 class BookDataIterator:
     def __init__(self, data):

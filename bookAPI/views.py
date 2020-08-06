@@ -6,7 +6,7 @@ from rest_framework.generics import ListAPIView, get_object_or_404
 from rest_framework.reverse import reverse
 
 from .client import Client
-from .load_data import load_to_db
+from load_data import load_to_db
 from .models import Book
 from rest_framework.views import APIView
 from rest_framework.response import Response
