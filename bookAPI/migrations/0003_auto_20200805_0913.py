@@ -6,18 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookAPI', '0002_auto_20200802_1615'),
+        ("bookAPI", "0002_auto_20200802_1615"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='book',
-            name='average_rating',
-            field=models.FloatField(blank=True, null=True, verbose_name='average rating'),
+            model_name="book",
+            name="average_rating",
+            field=models.FloatField(
+                blank=True, null=True, verbose_name="average rating"
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='ratings_count',
-            field=models.IntegerField(blank=True, null=True, verbose_name='rating count'),
+            model_name="book",
+            name="ratings_count",
+            field=models.IntegerField(
+                blank=True, null=True, verbose_name="rating count"
+            ),
         ),
     ]

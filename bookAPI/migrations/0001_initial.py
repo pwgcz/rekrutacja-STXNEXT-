@@ -7,47 +7,49 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('author_id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=200, verbose_name='name')),
+                ("author_id", models.AutoField(primary_key=True, serialize=False)),
+                ("name", models.CharField(max_length=200, verbose_name="name")),
             ],
-            options={
-                'verbose_name': 'author',
-                'verbose_name_plural': 'authors',
-            },
+            options={"verbose_name": "author", "verbose_name_plural": "authors",},
         ),
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('category_id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=200, verbose_name='name')),
+                ("category_id", models.AutoField(primary_key=True, serialize=False)),
+                ("name", models.CharField(max_length=200, verbose_name="name")),
             ],
-            options={
-                'verbose_name': 'category',
-                'verbose_name_plural': 'categories',
-            },
+            options={"verbose_name": "category", "verbose_name_plural": "categories",},
         ),
         migrations.CreateModel(
-            name='Book',
+            name="Book",
             fields=[
-                ('book_id', models.AutoField(primary_key=True, serialize=False)),
-                ('title', models.CharField(max_length=200, verbose_name='title')),
-                ('published_date', models.CharField(max_length=4, verbose_name='published date')),
-                ('average_rating', models.FloatField(default=0, verbose_name='average rating')),
-                ('ratings_count', models.IntegerField(default=0, verbose_name='rating count')),
-                ('thumbnail', models.CharField(max_length=300, verbose_name='thumbnail')),
-                ('authors', models.ManyToManyField(to='bookAPI.Author')),
-                ('categories', models.ManyToManyField(to='bookAPI.Category')),
+                ("book_id", models.AutoField(primary_key=True, serialize=False)),
+                ("title", models.CharField(max_length=200, verbose_name="title")),
+                (
+                    "published_date",
+                    models.CharField(max_length=4, verbose_name="published date"),
+                ),
+                (
+                    "average_rating",
+                    models.FloatField(default=0, verbose_name="average rating"),
+                ),
+                (
+                    "ratings_count",
+                    models.IntegerField(default=0, verbose_name="rating count"),
+                ),
+                (
+                    "thumbnail",
+                    models.CharField(max_length=300, verbose_name="thumbnail"),
+                ),
+                ("authors", models.ManyToManyField(to="bookAPI.Author")),
+                ("categories", models.ManyToManyField(to="bookAPI.Category")),
             ],
-            options={
-                'verbose_name': 'book',
-                'verbose_name_plural': 'books',
-            },
+            options={"verbose_name": "book", "verbose_name_plural": "books",},
         ),
     ]

@@ -6,43 +6,57 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookAPI', '0001_initial'),
+        ("bookAPI", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='author',
-            name='name',
-            field=models.CharField(blank=True, max_length=200, null=True, verbose_name='name'),
+            model_name="author",
+            name="name",
+            field=models.CharField(
+                blank=True, max_length=200, null=True, verbose_name="name"
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='average_rating',
-            field=models.FloatField(blank=True, default=0, null=True, verbose_name='average rating'),
+            model_name="book",
+            name="average_rating",
+            field=models.FloatField(
+                blank=True, default=0, null=True, verbose_name="average rating"
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='book_id',
-            field=models.CharField(max_length=50, primary_key=True, serialize=False, verbose_name='id'),
+            model_name="book",
+            name="book_id",
+            field=models.CharField(
+                max_length=50, primary_key=True, serialize=False, verbose_name="id"
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='published_date',
-            field=models.CharField(blank=True, max_length=4, null=True, verbose_name='published date'),
+            model_name="book",
+            name="published_date",
+            field=models.CharField(
+                blank=True, max_length=4, null=True, verbose_name="published date"
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='ratings_count',
-            field=models.IntegerField(blank=True, default=0, null=True, verbose_name='rating count'),
+            model_name="book",
+            name="ratings_count",
+            field=models.IntegerField(
+                blank=True, default=0, null=True, verbose_name="rating count"
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='thumbnail',
-            field=models.CharField(blank=True, max_length=300, null=True, verbose_name='thumbnail'),
+            model_name="book",
+            name="thumbnail",
+            field=models.CharField(
+                blank=True, max_length=300, null=True, verbose_name="thumbnail"
+            ),
         ),
         migrations.AlterField(
-            model_name='category',
-            name='name',
-            field=models.CharField(blank=True, max_length=200, null=True, verbose_name='name'),
+            model_name="category",
+            name="name",
+            field=models.CharField(
+                blank=True, max_length=200, null=True, verbose_name="name"
+            ),
         ),
     ]
