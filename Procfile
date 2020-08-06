@@ -1,1 +1,1 @@
-web: gunicorn books.wsgi --log-file -
+web: gunicorn books.wsgi --bind 0.0.0.0:${PORT}
