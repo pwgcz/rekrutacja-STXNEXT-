@@ -12,6 +12,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "https://recruitment-stx-library.herokuapp.com",
+    ".herokuapp.com",
 ]
 
 APPEND_SLASH = True
