@@ -2,19 +2,17 @@ import os
 from decouple import config
 from dj_database_url import parse as db_url
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
 
 SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "https://recruitment-stx-library.herokuapp.com",
+]
 
 APPEND_SLASH = True
 # Application definition
@@ -60,7 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "books.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -69,7 +66,6 @@ default_db_url = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
 DATABASES = {
     "default": config("DATABASE_URL", default=default_db_url, cast=db_url),
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -83,7 +79,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -96,7 +91,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
