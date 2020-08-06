@@ -5,9 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 class Book(models.Model):
     book_id = models.CharField(_("id"), primary_key=True, max_length=50)
 
-    title = models.CharField(_("title"), max_length=300)
-    published_date = models.CharField(
-        _("published date"), max_length=300, null=True, blank=True
+    title = models.CharField(_("title"), max_length=200)
+    published_date = models.TextField(
+        _("published date"), null=True, blank=True
     )
     average_rating = models.FloatField(_("average rating"), null=True, blank=True)
     ratings_count = models.IntegerField(_("rating count"), null=True, blank=True)
