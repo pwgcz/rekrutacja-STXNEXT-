@@ -21,7 +21,7 @@ class DB(APIView):
             request.data["q"]
         )
         data = load_to_db(raw_data)
-        return Response(data.data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_201_CREATED)
 
 
 class BookList(ListAPIView):
