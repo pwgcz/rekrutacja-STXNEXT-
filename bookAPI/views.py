@@ -19,7 +19,7 @@ class DB(APIView):
     def post(self, request, format=None):
         raw_data = Client("https://www.googleapis.com/books/v1/volumes").get_books(request.data['q'])
         data = load_to_db(raw_data)
-        return Response(data, status=status.HTTP_201_CREATED)
+        return Response(data.data, status=status.HTTP_201_CREATED)
 
 
 class BookList(ListAPIView):
