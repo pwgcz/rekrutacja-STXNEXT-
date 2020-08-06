@@ -1,6 +1,6 @@
 **Library**
 ---
-  _Created API base on data from  Google API available at given URL: https://www.googleapis.com/books/v1/volumes?q=Hobbit. API create instance of books to corresponding parameter (in given example parameters is Hobbit). API provide sorting by published_date and many authors, also sort by published date. Initial database contain books with parameters 'Hobbit'_
+  _Created API base on data from  Google API available at given URL: https://www.googleapis.com/books/v1/volumes?q=Hobbit. API create instance of books to corresponding parameter (in given example parameters is Hobbit). API provide sorting by published_date and many authors, also sort by published date. Initial database contain books with parameters 'Hobbit'._
 * **URL**
 
   * _/db_
