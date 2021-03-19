@@ -9,7 +9,7 @@ dj-database-url==0.5.0
 dj-static==0.0.6
 Django==3.0.8
 django-filter==2.3.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 idna==2.10
 pathspec==0.8.0
 python-decouple==3.3
